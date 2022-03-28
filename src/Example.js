@@ -2,4 +2,4 @@ const Example = () => {
     return <div>Example</div>
 };
 
-export default Example;
+export default Example

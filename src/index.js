@@ -9,7 +9,7 @@ const currentName = 'Ivan';
 ReactDOM.render(
   <React.StrictMode>
    
-    <App name ={currentName} topPosition='80px' showRed />
+    <App name ={currentName} topPosition='5px' showRed />
   </React.StrictMode>,
   document.getElementById('root')
 );

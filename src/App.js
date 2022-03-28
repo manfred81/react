@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Example from './Example';
+import Message from './Message';
 
 function App(props) { 
 
@@ -14,6 +15,7 @@ function App(props) {
          Hello {props.name}  
 
       <Example/>
+      <Message hello ={'bue'}/>
       </header>
     </div>
   );
