@@ -53,7 +53,7 @@ const inputRef = useRef(null);
         <div className= {'controlPanel'}>
   <TextField 
       inputRef={inputRef}
-      placeholder={'введите сообщение'}
+      placeholder={'введите что-то'}
       value ={value}
       onChange={handleInput}
       />
