@@ -1,19 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import Example from './Example';
 
-function App(props) { 
+import './App.scss';
+import Router from './pages/Router';
 
-  const isRed = `App-header ${props.showRed ? 'header-red' : 'header-blu'}`;
+function App() { 
+  
 
   return (
-      <div className={"App"}
-      style ={{top: props.topPosition || '20px', position: 'relative'}}>
-      <header 
-      className= {isRed} >     
-         Hello {props.name}  
-
-      <Example/>
+      <div className="App">
+        <header className= 'App-header'> 
+        <Router />
+       
       </header>
     </div>
   );
