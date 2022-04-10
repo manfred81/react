@@ -1,7 +1,10 @@
-import { useTheme, Fab } from "@emotion/react";
+import '..App/';
+import { useTheme, Fab } from "@mui/material";
 import { Send } from "@mui/icons-material";
 import React, { useEffect, useState, useState} from "react";
 import { AUTHOR } from "../constants/commom";
+import { TextField } from "@mui/material/TextField";
+import { Fab } from "@mui/material";
 
 
 
@@ -9,7 +12,7 @@ import { AUTHOR } from "../constants/commom";
 
 
 const ControlPanel = () => {
-const [massageList, setMassageList] = useState ([]);
+const [messageList, setMessageList] = useState ([]);
 const [value, setValue] = useState('');
 const theme = useTheme ();
 const inputRef = useRef(null);
@@ -18,10 +21,11 @@ const inputRef = useRef(null);
       setValue(event.target.value);
   };
   const handleClick = (e) => {
+
       e.preventDefault();
       if (value !== '') {
           const newMessage = {text: value, author: AUTHOR.me};
-          setMassageList([...(massageList || []), newMessage]);
+          setMessageList([...(messageList || []), newMessage]);
           setValue('');
           inputRef.current?.focus();
       
@@ -33,7 +37,7 @@ const inputRef = useRef(null);
   }, [])
   useEffect (() => {
       let timerId;
-      if (messageList?.length > 0 && messageList[messageList.length - 1].author !== AUTHOR.bot){
+      if ( messageList?.length > 0 && messageList[messageList.length - 1].author !== AUTHOR.bot){
           timerId = setInterval(() => {
               setMessageList([...messageList, newMessage]);
           }, 1500);

@@ -1,15 +1,17 @@
 
 
-const MessageList = ({massages}) => {
+const MessageList = ({ messages }) => {
   
-  return <div>
-        {massages.map((element, index) => (
+  return (
+  <div>
+        {messages.map((element, index) => (
         <div key={index}>
           <p>{element.text}</p>
           <sup>{element.author}</sup>
         </div>       
       ))} 
-    </div>;
+    </div>
+    );
 };
 
 export default MessageList;

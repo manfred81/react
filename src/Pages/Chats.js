@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MessageList from '../components/MessageList';
-import ChatList from '../components/ChatList';
 import { AUTHOR } from '../constants/commom';
-
+import '../pages/Router'
 
 
 const initialChats = {
@@ -26,11 +25,7 @@ const Chats = () => {
     if (!chats[chatId]) return null;
 
    
-    return <div className='wrapper'>
-   <ChatList chats ={chats}/>     
-   <MessageList messages= {chats[chatId].messages}/>
-
-
+    return <div> <MessageList messages={chats[chatId].messages} />
 </div>
    
 };

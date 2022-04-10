@@ -1,6 +1,6 @@
 
 const Messages = (props) => {
-    const massages = props.massages;
+    const messages = props.messages;
     const children = props.children;
     return <div>
       
