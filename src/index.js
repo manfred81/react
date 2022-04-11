@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import {createTheme, ThemeProvider} from "@mui/material"
 import {orange} from  "@mui/material/colors"
+import { BrowserRouter } from 'react-router-dom';
 
 
 
@@ -28,9 +29,15 @@ ReactDOM.render(
   <React.StrictMode>
    
    <ThemeProvider theme={theme}>
+     <BrowserRouter>
+     <App name ={currentName} 
+    
+    topPosition='5px' showRed />
     <App name ={currentName} 
     
     topPosition='5px' showRed />
+     </BrowserRouter>
+  
    
     </ThemeProvider>
   
