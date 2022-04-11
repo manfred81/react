@@ -30,11 +30,7 @@ ReactDOM.render(
    
    <ThemeProvider theme={theme}>
      <BrowserRouter>
-     <App name ={currentName} 
-    
-    topPosition='5px' showRed />
-    <App name ={currentName} 
-    
+     <App name ={currentName}   
     topPosition='5px' showRed />
      </BrowserRouter>
   
