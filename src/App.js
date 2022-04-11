@@ -1,6 +1,6 @@
-
 import './App.scss';
-import Router from './pages/Router';
+import'./pages/Router';
+
 
 
 function App() { 

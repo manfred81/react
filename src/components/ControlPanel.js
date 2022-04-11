@@ -1,18 +1,12 @@
-import '..App/';
-import { useTheme, Fab } from "@mui/material";
+import { useTheme, Fab, TextField } from "@mui/material";
 import { Send } from "@mui/icons-material";
-import React, { useEffect, useState, useState} from "react";
+import React, { useEffect, useState, useRef } from 'react';
 import { AUTHOR } from "../constants/commom";
-import { TextField } from "@mui/material/TextField";
-import { Fab } from "@mui/material";
+import { useParams } from 'react-router-dom';
 
 
-
-
-
-
-const ControlPanel = () => {
-const [messageList, setMessageList] = useState ([]);
+const ControlPanel = ({ addMessage}) => {
+let { chatId } = useParams ();    
 const [value, setValue] = useState('');
 const theme = useTheme ();
 const inputRef = useRef(null);
@@ -24,31 +18,31 @@ const inputRef = useRef(null);
 
       e.preventDefault();
       if (value !== '') {
-          const newMessage = {text: value, author: AUTHOR.me};
-          setMessageList([...(messageList || []), newMessage]);
+          const newMessage = { text: value, author: AUTHOR.me };
+          addMessage(chatId, newMessage);
           setValue('');
           inputRef.current?.focus();
       
       }
   };
 
-  useEffect(() => {
-      inputRef.current?.focus();
-  }, [])
-  useEffect (() => {
-      let timerId;
-      if ( messageList?.length > 0 && messageList[messageList.length - 1].author !== AUTHOR.bot){
-          timerId = setInterval(() => {
-              setMessageList([...messageList, newMessage]);
-          }, 1500);
-          const newMessage = { text: 'Привет друг', author: AUTHOR.bot};
-        }
-          return () => { 
-              if (timerId) {
-                  clearInterval(timerId);
-              }
-          };
-        }, [messageList]);
+//   useEffect(() => {
+//       inputRef.current?.focus();
+//   }, [])
+//   useEffect (() => {
+//       let timerId;
+//       if ( messageList?.length > 0 && messageList[messageList.length - 1].author !== AUTHOR.bot){
+//           timerId = setInterval(() => {
+//               setMessageList([...messageList, newMessage]);
+//           }, 1500);
+//           const newMessage = { text: 'Привет друг', author: AUTHOR.bot};
+//         }
+//           return () => { 
+//               if (timerId) {
+//                   clearInterval(timerId);
+//               }
+//           };
+//         }, [messageList]);
           
 
 

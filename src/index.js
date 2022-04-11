@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import {createTheme, ThemeProvider} from "@mui/material"
 import {orange} from  "@mui/material/colors"
-import { BrowserRouter } from 'react-router-dom';
+
 
 
 const currentName = 'Ivan';
@@ -31,8 +31,9 @@ ReactDOM.render(
     <App name ={currentName} 
     
     topPosition='5px' showRed />
-    
+   
     </ThemeProvider>
+  
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,6 +1,12 @@
+import { useParams } from 'react-router-dom';
+
+const MessageList = ({ chats }) => {
+  let { chatId } = useParams ();
+
+  if (!chats[chatId]) return null;
 
 
-const MessageList = ({ messages }) => {
+  const messages = chats[chatId].messages;
   
   return (
   <div>
