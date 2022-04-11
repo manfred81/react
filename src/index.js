@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {createTheme} from "@mui/material"
+import {createTheme, ThemeProvider} from "@mui/material"
 import {orange} from  "@mui/material/colors"
-import {ThemeProvider} from "@mui/material"
+
+
 
 const currentName = 'Ivan';
 
@@ -27,8 +28,12 @@ ReactDOM.render(
   <React.StrictMode>
    
    <ThemeProvider theme={theme}>
-    <App name ={currentName} topPosition='5px' showRed />
+    <App name ={currentName} 
+    
+    topPosition='5px' showRed />
+   
     </ThemeProvider>
+  
   </React.StrictMode>,
   document.getElementById('root')
 );

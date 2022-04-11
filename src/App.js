@@ -1,16 +1,19 @@
 
 import './App.scss';
-import Router from './pages/Router';
+import './pages/Router';
+
+
+
+
 
 function App() { 
-  
-
-  return (
+    return (
       <div className="App">
-        <header className= 'App-header'> 
-        <Router />
+        <header className= "App-header"> 
+        <Router/>
        
       </header>
+     
     </div>
   );
 }

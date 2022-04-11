@@ -1,21 +1,36 @@
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import Home from "./Home";
-import Profile from "./Profile";
-import Chats from "./Chats";
-import { AUTHOR } from "../constants/commom";
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
+import Home from './Home';
+import Profile from './Profile';
+import Chats from './Chats';
+import { AUTHOR } from '../constants/commom';
+import { useState } from 'react';
 
 const initialChats = {
-    id1:{
-        name: 'chat 1',
-        massages: [{text: 'Message 1', author: AUTHOR.bot}, {text: 'Hi', author: AUTHOR.me}]
+    id1: {
+        name: 'Chat 1',
+        messages: [
+            { text: 'Message 1', author: AUTHOR.bot },
+            { text: 'Hi', author: AUTHOR.me }
+        ]
     },
-    id2:{
-        name: 'chat 2',
-        massages: [{text: 'Message from chat 2', author: AUTHOR.me}]
+    id2: {
+      name: 'Chat 2',
+      messages: [{text: 'Message from chat 2', author: AUTHOR.me}]
     }
-}
+  };
 
 const Router = () => {
+    const [chats, setChats] = useState (initialChats);
+    const addMessage = (chatId, messages) => {
+      setChats( {
+          ...chats,
+           [chatId]: {
+          name: chats[chatId].name,
+          messages: [...chats[chatId].messages]
+      }
+    });
+    };
+
     return (
     <BrowserRouter>
     
@@ -35,7 +50,8 @@ const Router = () => {
     <Routes>
      <Route path="/" exact element = {<Home/>} />
      <Route path="/profile" element = {<Profile/>} />
-     <Route path="/chats/:chatId" element = {<Chats />} />
+     <Route path="/chats/:chatId" element = {<Chats chats ={chats} addMessage={addMessage} />} />
+     <Route path="*" element = {<Chats chats={chats} />} />
 
     </Routes>
     </BrowserRouter>
