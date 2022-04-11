@@ -1,5 +1,8 @@
+
 import './App.scss';
-import'./pages/Router';
+import './pages/Router';
+import { Router } from 'react-router-dom';
+
 
 
 
@@ -10,6 +13,7 @@ function App() {
         <Router />
        
       </header>
+     
     </div>
   );
 }
