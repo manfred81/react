@@ -1,12 +1,13 @@
-import { useTheme, Fab, TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import { useTheme, Fab } from "@mui/material";
 import { Send } from "@mui/icons-material";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { AUTHOR } from "../constants/commom";
 import { useParams } from 'react-router-dom';
 
 
 const ControlPanel = ({ addMessage}) => {
-let { chatId } = useParams ();    
+let {chatId} = useParams ();    
 const [value, setValue] = useState('');
 const theme = useTheme ();
 const inputRef = useRef(null);
@@ -68,5 +69,6 @@ const inputRef = useRef(null);
  </div>
 </div>
 );
-}
+};
+
 export default ControlPanel;

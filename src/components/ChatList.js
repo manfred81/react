@@ -1,7 +1,6 @@
-
 import { Avatar, IconButton, ListItem, ListItemText, Typography, List, ListItemAvatar } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 
 const ChatList = ({ chats }) => {
@@ -13,7 +12,7 @@ return (
     </Typography>
     <List>
       {Object.keys(chats).map((chat, index) => (
-        <Link to = {'/chats/${chat}'} key ={index}>
+        <Link to={`/chats/${chat}`} key={index}>
            <ListItem
             key={index}
             secondaryAction={
