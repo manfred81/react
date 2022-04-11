@@ -8,8 +8,11 @@ const Chats = ({ chats, addMessage }) => {
     return (
     <div className="wrapper">
     <ChatList chats={chats} />
-     <MessageList chats={chats} />
+    <div className="messengerPlace">
+    <MessageList chats={chats} />
      <ControlPanel addMessage={addMessage} />
+    </div>
+     
 </div>
     ); 
 };

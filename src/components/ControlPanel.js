@@ -1,6 +1,6 @@
 import { useTheme, Fab, TextField } from "@mui/material";
 import { Send } from "@mui/icons-material";
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { AUTHOR } from "../constants/commom";
 import { useParams } from 'react-router-dom';
 
