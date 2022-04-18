@@ -6,10 +6,10 @@ import { useSelector } from 'react-redux';
 
 
 const MessageList = () => {
-  const allMessages = useSelector( (state) => state.messages.messageList);
-
-  let { chatId } = useParams ();
-  const { name } = useSelector((state) => state.profile);
+ const allMessages = useSelector( (state) => state.messages.messageList);
+ const { name } = useSelector((state) => state.profile);
+ let { chatId } = useParams ();
+  
 
   if (!allMessages[chatId]) return null;
 
@@ -28,12 +28,12 @@ const MessageList = () => {
         <div key={element.id}>
           <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp">
+        <Avatar alt="Remy Sharp">
            {isAuthorBot (element.author) ? (
-           <Android/>
+          <Android/>
            ) : (
            <AccountCircle/>)}
-          </Avatar>
+        </Avatar>
         </ListItemAvatar>
         <ListItemText
           primary={isAuthorBot(element.author) ? AUTHOR.bot : name}
@@ -47,17 +47,15 @@ const MessageList = () => {
               >
                 {element.text}
               </Typography>
-            </>
-          }
-        />
-      </ListItem>
+              </>
+             }
+            />
+           </ListItem>
           <Divider variant="inset" component="li" />
         </div>       
-      ))}
-     
-     </List> 
-      
-      </>
+        ))}    
+     </List>      
+     </>
     );
 };
 

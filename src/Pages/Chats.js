@@ -7,13 +7,12 @@ import MessageList from '../components/MessageList';
 const Chats = () => {
     return (
     <div className="wrapper">
-    <ChatList />
-    <div className="messengerPlace">
-    <MessageList />
-    <ControlPanel />
+        <ChatList />
+      <div className="messengerPlace">
+        <MessageList />
+        <ControlPanel />
+      </div>    
     </div>
-     
-</div>
     ); 
 };
 

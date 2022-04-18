@@ -2,34 +2,9 @@ import { Route, Routes, Link } from 'react-router-dom'
 import Home from './Home';
 import Profile from './Profile';
 import Chats from './Chats';
-import { AUTHOR } from '../constants/commom';
-import { useState } from 'react';
 
-const initialChats = {
-   id1: {
-       name: 'Chat 1',
-       messages: [
-           {text:'Message 1', author: AUTHOR.bot},
-           {text: 'Hi', author: AUTHOR.me}
-    ]
-   },
-   id2: {
-    name: 'Chat 2',
-    messages: [{text:'Message from chat2', author: AUTHOR.me}]
-     }
- };
 
 const Router = () => {
-    const [chats, setChats] = useState (initialChats);
-    const addMessage = (chatId, message) => {
-      setChats( {
-          ...chats,
-           [chatId]: {
-          name: chats[chatId].name,
-          messages: [...chats[chatId].messages, message]
-      }
-    });
-    };
 
     return (
         <>
@@ -52,10 +27,10 @@ const Router = () => {
      <Route path="/profile" element = {<Profile/>} />
      <Route path="/profile" element = {<Profile/>} />
      <Route path="/chats">
-        <Route index element = {<Chats chats={chats} />} />
-        <Route path=':chatId' element={<Chats chats={chats} addMessage={addMessage} />} />
+        <Route index element = {<Chats />} />
+        <Route path=':chatId' element={<Chats />} />
      </Route >
-     <Route path='*' element= {<Chats chats={chats} />} />
+     <Route path='*' element= {<Chats />} />
     </Routes>
 
     </>
