@@ -4,7 +4,8 @@ import { Send } from "@mui/icons-material";
 import React, { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMessageWithSaga } from "../store/messages/actions";
+// import { addMessageWithSaga } from "../store/messages/actions";
+import { addMessageWithThunk } from './../store/messages/actions';
 
 
 
@@ -23,7 +24,7 @@ const author = useSelector((state)=> state.profile.name);
       e.preventDefault();
       if (value !== '') {
           const newMessage = { text: value, author: author };
-          dispatch (addMessageWithSaga(chatId, newMessage));
+          dispatch (addMessageWithThunk(chatId, newMessage));
           setValue('');
           inputRef.current?.focus();
         }
