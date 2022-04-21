@@ -1,7 +1,13 @@
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import profileReducer from './profile/reducer';
-import { createStore, combineReducers } from 'redux';
 import chatsReducer from './chats/reducer';
 import messagesReducer from './messages/reducer';
+import mySaga from './sagas';
+import createSagaMiddleware from 'redux-saga';
+
+
+
+const sagaMiddleware = createSagaMiddleware();
 
 const redusers = combineReducers ({
     profile: profileReducer,
@@ -9,9 +15,8 @@ const redusers = combineReducers ({
     messages: messagesReducer
 });
 
-const  store = createStore(
-    redusers,
-     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-     );
+const store = createStore(redusers, applyMiddleware(sagaMiddleware));
 
 export default store;
+
+sagaMiddleware.run(mySaga);

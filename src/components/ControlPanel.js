@@ -1,11 +1,10 @@
 import TextField from "@mui/material/TextField";
 import { useTheme, Fab } from "@mui/material";
 import { Send } from "@mui/icons-material";
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMessage } from "../store/messages/actions";
-import { AUTHOR } from "../constants/commom";
+import { addMessageWithSaga } from "../store/messages/actions";
 
 
 
@@ -16,49 +15,20 @@ const theme = useTheme ();
 const inputRef = useRef(null);
 const dispatch = useDispatch();
 const author = useSelector((state)=> state.profile.name);
-const allMessages = useSelector((state)=> state.messages.messageList);
-
-const messages = allMessages[chatId] || [];
-
 
   const handleInput = (event) => {
       setValue(event.target.value);
   };
   const handleClick = (e) => {
-
       e.preventDefault();
       if (value !== '') {
           const newMessage = { text: value, author: author };
-          dispatch (addMessage(chatId, newMessage));
+          dispatch (addMessageWithSaga(chatId, newMessage));
           setValue('');
           inputRef.current?.focus();
-      
-      }
-  };
-
-  useEffect(() => {
-      inputRef.current?.focus();
-  }, []);
-
-  useEffect (() => {
-      let timerId;
-      if ( messages?.length > 0 && messages[messages.length - 1].author !== AUTHOR.bot
-        ){
-        const newMessage = { text: 'Привет друг', author: AUTHOR.bot};
-          timerId = setInterval(() => {
-              dispatch(addMessage(chatId, newMessage ));
-          }, 1500);
-          
         }
-          return () => { 
-              if (timerId) {
-                  clearInterval(timerId);
-              }
-          };
-        }, [messages, chatId]);
-          
-
-
+  };
+     
     return (
     <div>
         <div className= {'controlPanel'}>
