@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import profileReducer from './profile/reducer';
 import chatsReducer from './chats/reducer';
 import messagesReducer from './messages/reducer';
+import gistsReducer from './gists/reducer';
 
 // import mySaga from './sagas';
 // import createSagaMiddleware from 'redux-saga';
@@ -23,7 +24,8 @@ const persistConfig = {
 const redusers = combineReducers ({
     profile: profileReducer,
     chats: chatsReducer,
-    messages: messagesReducer
+    messages: messagesReducer,
+    gists: gistsReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, redusers); 
