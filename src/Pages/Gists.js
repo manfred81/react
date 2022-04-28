@@ -31,7 +31,7 @@ const Gists = () => {
     }
 
     if (error) {
-        return(
+        return (
             <>
             <h3>Error</h3>
             <button onClick={reguestGists}>Retry</button>
