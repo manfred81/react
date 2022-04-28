@@ -2,29 +2,30 @@ import { AccountCircle, Android } from '@mui/icons-material';
 import { Avatar, Divider, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { AUTHOR } from '../constants/commom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getMessagesByChatIdWithFB } from '../midllewares/middleware';
 
 
 const MessageList = () => {
  const allMessages = useSelector( (state) => state.messages.messageList);
  const { name } = useSelector((state) => state.profile);
  let { chatId } = useParams ();
-  
-
-  if (!allMessages[chatId]) return null;
-
-
-  const messages = allMessages[chatId];
+ const dispatch = useDispatch();
+ const messages = allMessages[chatId];
 
   const isAuthorBot = (author) => {
     return author === AUTHOR.bot;
   };
 
+  useEffect (() => {
+    dispatch(getMessagesByChatIdWithFB(chatId));
+  }, [chatId]);
 
   return (
     <>
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        {messages.map((element) => (
+        {messages?.map((element) => (
         <div key={element.id}>
           <ListItem alignItems="flex-start">
         <ListItemAvatar>

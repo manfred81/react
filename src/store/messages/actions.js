@@ -4,6 +4,7 @@ import { AUTHOR } from '../../constants/commom';
 
 export const ADD_MESSAGE = 'MESSAGES::ADD_MESSAGE';
 export const ADD_MESSAGE_WITH_SAGA = 'MESSAGES::ADD_MESSAGE_WITH_SAGA';
+export const UPDATE_MESSAGES = 'MESSAGES::UPDATE_MESSAGES';
 
 export const addMessage = (chatId, message) => ({
     type: ADD_MESSAGE,
@@ -26,3 +27,9 @@ export const addMessageWithThunk =
 
     }
 };
+
+export const updateMessages = (chatId, messages) => ({
+   type: UPDATE_MESSAGES,
+   chatId,
+   messages
+});

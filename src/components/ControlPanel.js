@@ -5,7 +5,7 @@ import React, { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import { addMessageWithSaga } from "../store/messages/actions";
-import { addMessageWithThunk } from './../store/messages/actions';
+import { addMessageWithFB } from "../midllewares/middleware";
 
 
 
@@ -24,7 +24,7 @@ const author = useSelector((state)=> state.profile.name);
       e.preventDefault();
       if (value !== '') {
           const newMessage = { text: value, author: author };
-          dispatch (addMessageWithThunk(chatId, newMessage));
+          dispatch (addMessageWithFB(chatId, newMessage));
           setValue('');
           inputRef.current?.focus();
         }

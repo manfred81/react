@@ -1,4 +1,4 @@
-import { addMessage, ADD_MESSAGE } from "../store/messages/actions";
+import { addMessage, ADD_MESSAGE, updateMessages } from "../store/messages/actions";
 import { AUTHOR } from '../constants/commom';
 import { getDatabase, onValue, push, ref, remove, set } from 'firebase/database';
 import firebaseConfig from "../services/firebaseConfig";
@@ -52,7 +52,30 @@ export const deleteChatWithFB = (id) => async () => {
     remove(messagesRef).then((res) => {
         console.log('Messages deleted', res)
     });
+};
 
+export const addMessageWithFB = (chatId, message) => async () => {
+    const db = getDatabase(firebaseConfig);
+    const messageRef = ref(db, `/messages/${chatId}`);
+    const newMessageRef = push(messageRef);
+    set(newMessageRef, message).then((res) => {
+        console.log('messages added', res);
+    });
+
+};
+
+export const getMessagesByChatIdWithFB = (chatId) => async (dispatch) => {
+    const db = getDatabase(firebaseConfig);
+
+    const msgRef = ref(db, `/messages/${chatId}`);
+
+    onValue(msgRef, (snapshot) => {
+        const data = snapshot.val();
+        const msg = data && Object.values(data);
+        if(msg?.length > 0) {
+            dispatch(updateMessages(chatId, msg));
+        }
+    });
 };
 
 
