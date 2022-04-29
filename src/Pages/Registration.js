@@ -70,7 +70,8 @@ const Registration = () => {
         <p>
             Уже есть аккаунт?
             <br/>
-             <Link to="login">Войти</Link>
+            <br/>
+             <Link style={{color: 'grey'}}  to="login">Войти</Link>
         </p>
         </form>
     </div>

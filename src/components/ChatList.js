@@ -44,7 +44,7 @@ return (
     <List>
       {chats?.length > 0 ? (
         chats.map((chat) => (
-        <Link to= {`/chats/${chat.id}`} key={chat.id}>
+        <Link style={{color: 'white'}} variant='outlined' to= {`/chats/${chat.id}`} key={chat.id}>
            <ListItem
             secondaryAction={
              <IconButton
@@ -65,9 +65,9 @@ return (
            <div>Chats not found</div>
         )}
     </List >
-    <Button onClick={handleAdd}>Add chat</Button>
+    <Button onClick={handleAdd} variant='outlined' color='success'>Add chat</Button>
     <Dialog open={visible} onClose={handleClose}>
-      <Paper stylee={{padding: '10px'}}>
+      <Paper style={{padding:'10px'}}>
       <DialogTitle>Please enter a name for a new chat</DialogTitle>
       <TextField
       placeholder= "Chat name"
@@ -77,7 +77,7 @@ return (
       />
       <br/>
       <br/>
-      <Button onClick={handleSave} style={{color: 'white'}} variant='outlined'>Save chat</Button>
+      <Button onClick={handleSave} color='success' variant='outlined'>Save chat</Button>
       </Paper>      
     </Dialog>
   </div>

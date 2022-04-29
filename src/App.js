@@ -1,8 +1,9 @@
 import './App.scss';
-import Router from './pages/Router';
 import React, {useState} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './hooks/AuthProvider';
+import Router from './pages/Router';
+
 
 export const MyThemeContext = React.createContext({ theme: 'dark'});
 

@@ -71,7 +71,7 @@ const Login = () => {
             <br/>
             <br/>
             {error && <p>{error}</p>}
-            <Button variant="outlined" type="submit" color='success'>
+            <Button variant="outlined" color='success' type="submit" >
                 Войти
             </Button>
         </form>

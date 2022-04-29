@@ -32,8 +32,10 @@ const Profile = () => {
          placeholder="Введите ваше имя"
          value ={value}
          onChange={handleInput}
-        /> 
-        <Button onClick={saveName}>Сохранить</Button>    
+        />
+        <br/>
+        <br/> 
+        <Button onClick={saveName} variant="outlined" color='success'>Сохранить</Button>    
      </div>
         );
 };
