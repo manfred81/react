@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import {createTheme, ThemeProvider} from "@mui/material"
 import {orange} from  "@mui/material/colors"
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 
 
 
@@ -26,14 +29,13 @@ const theme = createTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-   
-   <ThemeProvider theme={theme}>
-    <App name ={currentName} 
-    
-    topPosition='5px' showRed />
-   
+    <Provider store={store}>
+     <ThemeProvider theme={theme}>
+      <BrowserRouter>
+       <App name ={currentName} topPosition='5px'/>
+     </BrowserRouter>  
     </ThemeProvider>
-  
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

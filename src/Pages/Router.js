@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
+import { Route, Routes, Link } from 'react-router-dom'
 import Home from './Home';
 import Profile from './Profile';
 import Chats from './Chats';
@@ -33,7 +33,6 @@ const Router = () => {
 
     return (
         <>
-     <BrowserRouter>
    
     <ul className={'menu'}>
         <li>
@@ -51,12 +50,14 @@ const Router = () => {
     <Routes>
      <Route path="/" exact element = {<Home/>} />
      <Route path="/profile" element = {<Profile/>} />
-     <Route path="/chats/:chatId" element = {<Chats chats ={chats} addMessage={addMessage} />} />
-     <Route path="*" element = {<Chats chats={chats} />} />
-
+     <Route path="/profile" element = {<Profile/>} />
+     <Route path="/chats">
+        <Route index element = {<Chats chats={chats} />} />
+        <Route path=':chatId' element={<Chats chats={chats} addMessage={addMessage} />} />
+     </Route >
+     <Route path='*' element= {<Chats chats={chats} />} />
     </Routes>
-    
-    </BrowserRouter>
+
     </>
     );
 };
