@@ -4,16 +4,15 @@ import MessageList from '../components/MessageList';
 
 
 
-const Chats = ({ chats, addMessage }) => {
+const Chats = () => {
     return (
     <div className="wrapper">
-    <ChatList chats={chats} />
-    <div className="messengerPlace">
-    <MessageList chats={chats} />
-     <ControlPanel addMessage={addMessage} />
+        <ChatList />
+      <div className="messengerPlace">
+        <MessageList />
+        <ControlPanel />
+      </div>    
     </div>
-     
-</div>
     ); 
 };
 

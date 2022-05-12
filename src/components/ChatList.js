@@ -1,34 +1,85 @@
-
-import { Avatar, IconButton, ListItem, ListItemText, Typography, List, ListItemAvatar } from "@mui/material";
+import { Avatar, IconButton, ListItem, ListItemText, List, ListItemAvatar, Button, Dialog, DialogTitle, TextField, Paper } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Link } from "react-router-dom";
+import { Link, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from "react";
+import { deleteChatWithFB, addChatWithFB,initTrackerWithFB } from '../midllewares/middleware';
 
 
-const ChatList = ({ chats }) => {
+const ChatList = () => {
+  const chats = useSelector(state => state.chats.chatList);
+  const [visible, setVisible] = useState(false);
+  const [chatName, setChatName] = useState('');
+  const dispatch = useDispatch();
+  const {chatId} = useParams();
+
+  const handleChatName = (e) => {
+    setChatName(e.target.value);
+  };
+
+  const handleClose = () => {
+     setVisible(false);
+  };
+
+  const handleAdd = () => {
+    setVisible(true);
+  };
+
+  const handleSave = () => {
+    dispatch(addChatWithFB(chatName));
+    setChatName('');
+    handleClose();
+  };
+
+  const deleteChat = (id) => {
+    dispatch(deleteChatWithFB(id));
+  };
+
+  useEffect( () => {
+    dispatch(initTrackerWithFB());
+  }, [chatId]);
 
 return (
-  <div>
-    <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-      Chat List
-    </Typography>
+  <div>  
     <List>
-      {Object.keys(chats).map((chat, index) => (
-        <Link to = {'/chats/${chat}'} key ={index}>
+      {chats?.length > 0 ? (
+        chats.map((chat) => (
+        <Link style={{color: 'white'}} variant='outlined' to= {`/chats/${chat.id}`} key={chat.id}>
            <ListItem
-            key={index}
             secondaryAction={
-             <IconButton edge="end" aria-label="delete">
+             <IconButton
+              edge="end"
+              aria-label="delete"
+              onClick={() => deleteChat(chat.id)}>
              <DeleteIcon />
             </IconButton>
            }>
           <ListItemAvatar>
             <Avatar />
           </ListItemAvatar>
-          <ListItemText primary={chats[chat].name} />
+          <ListItemText primary={chat.name} />
         </ListItem>
         </Link>
-        ))}
-    </List>
+        )) 
+        ) : (
+           <div>Chats not found</div>
+        )}
+    </List >
+    <Button onClick={handleAdd} variant='outlined' color='success'>Add chat</Button>
+    <Dialog open={visible} onClose={handleClose}>
+      <Paper style={{padding:'10px'}}>
+      <DialogTitle>Please enter a name for a new chat</DialogTitle>
+      <TextField
+      placeholder= "Chat name"
+      value={chatName}
+        onChange={handleChatName}
+        fullWidth           
+      />
+      <br/>
+      <br/>
+      <Button onClick={handleSave} color='success' variant='outlined'>Save chat</Button>
+      </Paper>      
+    </Dialog>
   </div>
  );
 };
