@@ -45,8 +45,12 @@
   },
   "devDependencies": {
     "prettier": "2.6.2",
-    "webpac": "^0.0.1-security"
-  },
+    "webpac": "^0.0.1-security",
+    "jest-watch-typeahead": "^0.6.5"
+    },
+  "jest": {
+    "clearMocks": true
+  },  
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   }
